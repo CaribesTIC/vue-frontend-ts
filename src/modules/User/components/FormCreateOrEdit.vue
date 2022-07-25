@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { reactive } from "vue"
 import AppBtn from "@/components/AppBtn.vue";
+import AppSelect from "@/components/AppSelect.vue";
 import type User from "../types/User"
 import type Role from "../types/Role"
 import type Errors from "../types/Errors"
@@ -56,8 +57,15 @@ const submit = async () => {
           {{ errors.password[0] }}
         </div>
       </label>
+      
+      <AppSelect
+        label="Select a role"
+        :options="roles"
+        v-model="form.role_id"
+        :error="errors.role_id"
+      />
 
-      <label class="block">
+      <!--label class="block">
         <span class="text-gray-700">Rol</span>
         <select v-model="form.role_id" class="p-2">
           <option value="" class="text-gray-200">Seleccione...</option>
@@ -68,7 +76,7 @@ const submit = async () => {
         <div v-if="errors.role_id" class="form-error">
           {{ errors.role_id[0] }}
         </div>
-      </label>
+      </label-->
 
     </div>
 
